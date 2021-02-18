@@ -12,13 +12,7 @@
 
       <div class="nav-itens">
         <v-btn text>
-          <router-link class="text-purple" to="/">Home</router-link>
-        </v-btn>
-        <v-btn text>
-          <router-link class="text-purple" to="/about">About</router-link>
-        </v-btn>
-        <v-btn text>
-          <router-link class="text-purple" to="/store">Loja</router-link>
+          <router-link class="text-purple" to="/">Loja</router-link>
         </v-btn>
         <v-btn text>
           <router-link class="text-purple" to="/item/store"
