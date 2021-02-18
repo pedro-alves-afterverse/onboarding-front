@@ -8,6 +8,7 @@
           :category="item.category" 
           :id="item.id"
           :type="type"
+          @click="$emit('handle-click', item.id)"
           style="margin: auto"
           />
         </v-col>

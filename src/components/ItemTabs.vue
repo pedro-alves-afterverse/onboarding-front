@@ -24,7 +24,7 @@
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="category in categories" :key="category">
         <v-card tile flat color="#009bef">
-            <item-container style="height: 300px" :category="category" :type="type"/>
+            <item-container @handle-click="$emit('handle-click', {id: $event, category: category})" style="height: 300px" :category="category" :type="type"/>
 
         </v-card>
       </v-tab-item>

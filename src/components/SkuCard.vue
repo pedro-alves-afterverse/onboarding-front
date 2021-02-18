@@ -1,6 +1,7 @@
 <template>
     <v-card
         class="sku-card"
+        @click="$emit('click')"
     >
         <div class="card-purple-bg d-flex flex-column justify-center align-center">
             <card-currency

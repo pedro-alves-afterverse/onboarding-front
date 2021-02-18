@@ -3,23 +3,60 @@
     <div class="store-banner d-flex justify-center align-center">
       <h1>Compre e divirta-se!</h1>
     </div>
-    <sku-container :skus="skus_list"/>
+    <sku-container
+     @handle-click="handleClick" 
+     :skus="skus_list"
+    />
+    <confirm-dialog 
+    :open="dialog" 
+    @handle-close="handleClose"
+    @handle-buy="handleBuy"
+    />
   </div>
 </template>
 
 <script>
+import ConfirmDialog from '../components/ConfirmDialog.vue';
 import SkuContainer from '../components/SkuContainer.vue';
 import api from "../services/api"
+import { profileId } from '../services/auth';
 
 export default {
   name: "Store",
   data(){
     return {
+      dialog: false,
+      currentSku: null,
       skus_list: []
     }
   },
   components: {
     SkuContainer,
+    ConfirmDialog,
+  },
+  methods: {
+    handleClick(skuId){
+      this.currentSku = skuId
+      this.dialog = true
+    },
+    handleClose(){
+      this.currentSku = null
+      this.dialog = false
+    },
+    handleBuy(){
+      api.patch(`/profile/buy/sku/${profileId}`, {skuId: this.currentSku})
+      .then(() => {
+        this.currentSku = null
+        this.dialog = false
+        window.location.reload()
+      })
+      .catch(error => {
+        console.log(error);
+        this.currentSku = null
+        this.dialog = false
+        alert("Ocorreu um erro")
+      })
+    }
   },
   created() {
     api.get("/sku")

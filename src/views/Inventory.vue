@@ -1,5 +1,7 @@
 <template>
-  <item-pages :categories="categories" :title="'Uau quantas roupas legais!'" :type="'inventory'"/>
+  <div class="item-page-main bg-purple">
+    <item-pages :categories="categories" :title="'Uau quantas roupas legais!'" :type="'inventory'"/>
+  </div>
 </template>
 
 <script>
@@ -18,3 +20,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.item-page-main{
+    background-image: url("~@/assets/backgrounds/bg-pattern.svg");
+    width: 100%;
+    height: 100%;
+}
+</style>

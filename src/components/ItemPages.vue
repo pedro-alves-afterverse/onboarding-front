@@ -1,12 +1,12 @@
 <template>
-  <div class="item-page-main bg-purple">
+  <div>
       <div class="star-banner">
         <div class="item-page-banner d-flex justify-center align-center">
           <h1>{{title}}</h1>
         </div>
       </div>
       
-      <item-tabs :categories="categories" :type="type"/>
+      <item-tabs @handle-click="$emit('handle-click', $event)" :categories="categories" :type="type"/>
 
   </div>
 </template>
