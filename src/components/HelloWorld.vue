@@ -93,20 +93,20 @@
         <h2 class="headline font-weight-bold mb-3">
           Gatos
         </h2>
-        <ItemContainer/>
+        <SkuContainer/>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import ItemContainer from './ItemContainer.vue';
+import SkuContainer from './SkuContainer.vue';
 
   export default {
     name: 'HelloWorld',
 
     components: {
-      ItemContainer
+    SkuContainer,
     },
 
     data: () => ({

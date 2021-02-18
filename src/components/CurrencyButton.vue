@@ -21,9 +21,9 @@ export default {
         amount: Number,
         type: String
     },
-    methods: {
+    computed: {
         getImgSource(){
-            return this.type === "coin" ? require("@/assets/icons/icon-coin.svg") : require("@/assets/icons/icon-gem.svg")
+            return this.type == "coin" ? require("@/assets/icons/icon-coin.svg") : require("@/assets/icons/icon-gem.svg")
         }
     }
 }
