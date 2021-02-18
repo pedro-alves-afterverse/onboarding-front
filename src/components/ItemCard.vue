@@ -9,7 +9,7 @@
                 width="70%"
             ></v-img>
         </div>
-        <v-card-title class="item-card-text justify-center">
+        <v-card-title v-if="type == 'store'" class="item-card-text justify-center">
             <card-currency
                 :amount="price"
                 :type="currency"
@@ -27,7 +27,8 @@ export default {
         price: Number,
         currency: String,
         category: String,
-        id: String
+        id: String,
+        type: String
     },
     components: {
         CardCurrency

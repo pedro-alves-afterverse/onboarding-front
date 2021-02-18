@@ -22,7 +22,12 @@
         </v-btn>
         <v-btn text>
           <router-link class="text-purple" to="/item/store"
-            >Loja de Itens</router-link
+            >Loja de Roupas</router-link
+          >
+        </v-btn>
+        <v-btn text>
+          <router-link class="text-purple" to="/inventory"
+            >Inventário</router-link
           >
         </v-btn>
       </div>
@@ -44,26 +49,7 @@
       </div>
     </div>
 
-    <!-- <v-container>
-        <v-row style="text-align: right" justify="end">
-            <v-col cols="12" style="padding-bottom: 0px; text-align: right">
-                <p style="margin: 0">Fulano</p>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col cols="6" style="text-align: right">
-                <currency-button
-                    :amount="300"
-                    :type="'coin'"
-                />
-            </v-col >
-            <v-col cols="6">
-                <currency-button
-                    :amount="50"
-                    :type="'gem'"
-                />
-            </v-col>
-        </v-row>
-      </v-container> -->
+    
   </v-app-bar>
 </template>
 <script>

@@ -1,16 +1,26 @@
 <template>
-  <div class="item-container">
-    <v-row justify="center" align="center">
-      <v-col cols="4" v-for="item in itemsList" :key="item.id">
-        <item-card
-         :price="item.price" 
-         :currency="item.currency" 
-         :category="item.category" 
-         :id="item.id"
-         style="margin: auto"
-        />
-      </v-col>
+  <div class="item-container d-flex">
+    <v-row v-if="itemsList.length > 0" justify="center" align="center" align-content="center">
+        <v-col cols="4" v-for="item in itemsList" :key="item.id">
+          <item-card
+          :price="item.price" 
+          :currency="item.currency" 
+          :category="item.category" 
+          :id="item.id"
+          :type="type"
+          style="margin: auto"
+          />
+        </v-col>
     </v-row>
+    <div v-else class="d-flex justify-center align-center" style="width: 100%">
+      <div v-if="type == 'store'" style="text-align: center">
+        <h2 style="color: #ffffff">Uau, parece que você ja comprou todos os itens dessa categoria.</h2>
+      </div>
+      <div v-else style="text-align: center">
+        <h2 style="color: #ffffff">Ops, parece que você ainda não tem nenhum item dessa categoria.</h2>
+        <h2 style="color: #ffffff">Vamos resolver isso?</h2>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,13 +37,19 @@ export default {
     }
   },
 	props: {
-		category: String 
+		category: String,
+    type: String
 	},
   components: {
     ItemCard
   },
+  computed: {
+    getApiUrl(){
+      return this.type == "store" ? `/item/${this.category}/user/${profileId}` : `/profile/items/${profileId}/${this.category}`
+    }
+  },
   created(){
-    api.get(`/item/${this.category}/user/${profileId}`)
+    api.get(this.getApiUrl)
     .then(res => {
       this.itemsList = res.data
     })

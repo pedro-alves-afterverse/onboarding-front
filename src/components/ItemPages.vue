@@ -6,7 +6,7 @@
         </div>
       </div>
       
-      <item-tabs :categories="categories"/>
+      <item-tabs :categories="categories" :type="type"/>
 
   </div>
 </template>

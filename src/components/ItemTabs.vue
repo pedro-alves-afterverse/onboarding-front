@@ -2,7 +2,7 @@
   <v-card class="item-tabs" color="#0082eb">
     <v-card-title class="text-center justify-center" style="background-color: #0082eb; color: #ffffff">
       <h1>
-        Loja de roupas
+        {{getCardTitle}}
       </h1>
     </v-card-title>
     <v-tabs 
@@ -24,7 +24,7 @@
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="category in categories" :key="category">
         <v-card tile flat color="#009bef">
-            <item-container :category="category"/>
+            <item-container style="height: 300px" :category="category" :type="type"/>
 
         </v-card>
       </v-tab-item>
@@ -40,10 +40,16 @@ export default {
   name: "ItemTabs",
   props: {
     categories: Array,
+    type: String
   },
   data(){
     return{
       tab: null,
+    }
+  },
+  computed: {
+    getCardTitle(){
+      return this.type == "store" ? "Loja de Roupas" : "Inventário"
     }
   }
 };
